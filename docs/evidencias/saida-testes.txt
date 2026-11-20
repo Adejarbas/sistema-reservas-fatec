@@ -1,0 +1,64 @@
+▶ Fluxo de análise e aprovação
+  ✔ CA-07: rejeição sem justificativa é bloqueada (88.0067ms)
+  ✔ CA-07: rejeição com justificativa encerra a solicitação e registra no histórico (85.6742ms)
+  ✔ devolver para ajustes exige motivo e volta para pendente após a correção (91.0825ms)
+  ✔ RN-18: aprovar o evento não aprova os equipamentos automaticamente (87.1403ms)
+  ✔ o solicitante é notificado da decisão (89.4052ms)
+  ✔ CA-08 / RN-09: alterar reserva aprovada revalida e volta para análise (87.4869ms)
+  ✔ CA-08: se a alteração gerar conflito, nada muda e a reserva continua aprovada (154.1847ms)
+  ✔ CA-09 / RN-10: cancelamento exige motivo, libera a agenda e fica registrado (93.8802ms)
+  ✔ não é possível cancelar a solicitação de outra pessoa (80.0611ms)
+  ✔ conclusão só depois do término da atividade (84.336ms)
+  ✔ CA-12: duas aprovações simultâneas do mesmo recurso não duplicam a alocação (94.4093ms)
+  ✔ CA-12: com BEGIN IMMEDIATE uma segunda conexão não consegue gravar no meio da aprovação (108.5071ms)
+✔ Fluxo de análise e aprovação (1690.3327ms)
+▶ Conflito de horário (RN-04)
+  ✔ regra de sobreposição: inicioA < fimB e inicioB < fimA (81.6768ms)
+  ✔ CA-01: auditório reservado das 14h às 16h bloqueia pedido das 15h às 17h (86.8577ms)
+  ✔ CA-01: sobreposição parcial no começo e pedido que engloba a reserva também são bloqueados (81.9489ms)
+  ✔ CA-02: reserva encostada (16h às 18h) é permitida sem intervalo técnico (85.8491ms)
+  ✔ com intervalo técnico de 30 min, a reserva encostada passa a conflitar (82.9769ms)
+  ✔ a verificação é refeita na aprovação: o segundo pedido pendente do mesmo horário não é aprovado (103.6385ms)
+  ✔ RN-05: espaço com bloqueio no período não pode ser reservado (123.3271ms)
+  ✔ consulta de disponibilidade mostra ocupado e livre (103.0733ms)
+✔ Conflito de horário (RN-04) (1278.6351ms)
+▶ Retirada e devolução de equipamentos
+  ✔ CA-10: retirada registra responsável e horário da entrega (90.4423ms)
+  ✔ CA-11: equipamento devolvido com avaria fica indisponível (101.3398ms)
+  ✔ não é possível retirar equipamento que ainda não foi aprovado (77.8744ms)
+  ✔ não é possível devolver o que não foi retirado nem retirar duas vezes (91.6916ms)
+  ✔ equipamento retirado e não devolvido continua ocupado depois do horário (87.7005ms)
+  ✔ não é possível cancelar com equipamento retirado sem devolução (92.9827ms)
+  ✔ fluxo completo: solicitar, devolver p/ ajuste, reenviar, aprovar, retirar e devolver (163.7793ms)
+✔ Retirada e devolução de equipamentos (1221.9876ms)
+▶ Autenticação e controle de acesso
+  ✔ login com senha errada e usuário inativo são recusados (220.5973ms)
+  ✔ rotas protegidas sem login retornam 401 (81.0087ms)
+  ✔ o cookie de sessão é httpOnly (148.212ms)
+  ✔ usuário comum que tenta a URL de aprovação recebe 403 (93.7257ms)
+  ✔ usuário sem permissão recebe 403 nas rotas restritas (149.9346ms)
+  ✔ solicitante não vê solicitação de outra pessoa (89.5584ms)
+  ✔ RNF-03: gestor não pode aprovar a própria solicitação (93.2353ms)
+  ✔ cadastro de espaço e equipamento pelos perfis responsáveis (90.7625ms)
+  ✔ bloqueio sobre reserva aprovada avisa as reservas afetadas (76.6581ms)
+  ✔ alterações administrativas ficam na auditoria (109.5041ms)
+✔ Autenticação e controle de acesso (1675.1121ms)
+▶ Validações da solicitação
+  ✔ CA-03: público acima da capacidade do espaço é bloqueado (90.4436ms)
+  ✔ dados obrigatórios ausentes impedem o envio e indicam os campos (85.0374ms)
+  ✔ RN-03: horário final igual ou anterior ao inicial é recusado (74.6058ms)
+  ✔ RN-07: fora do horário de funcionamento e sem antecedência mínima (84.5312ms)
+  ✔ rascunho é salvo sem checar conflito; a verificação acontece no envio (88.1024ms)
+  ✔ CA-04 / RN-14: equipamento em manutenção ou avariado não pode ser reservado (90.6364ms)
+  ✔ RN-12: equipamento individual não pode ter reservas sobrepostas (127.5228ms)
+  ✔ RN-13: item por quantidade não pode ficar com saldo negativo (117.0902ms)
+  ✔ transições inválidas são recusadas (84.9552ms)
+✔ Validações da solicitação (1371.6357ms)
+ℹ tests 46
+ℹ suites 5
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2487.9284
