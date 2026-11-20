@@ -1,0 +1,9 @@
+node_modules/
+.env
+
+# banco gerado pelo seed
+*.db
+*.db-journal
+
+.vscode/
+.DS_Store
