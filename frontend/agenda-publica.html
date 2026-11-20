@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de eventos - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <a class="marca" href="agenda-publica.html">Reservas <span>Fatec</span></a>
+    <a href="index.html">Entrar</a>
+  </header>
+
+  <main class="conteudo" id="conteudo" style="margin: 0 auto">
+    <h1>Agenda de eventos</h1>
+    <p class="subtitulo">Somente eventos aprovados. Não são exibidos dados pessoais.</p>
+
+    <form id="form-filtro" class="card filtros">
+      <div class="campo">
+        <label for="de">De</label>
+        <input type="date" id="de" name="de">
+      </div>
+      <div class="campo">
+        <label for="ate">Até</label>
+        <input type="date" id="ate" name="ate">
+      </div>
+      <div class="campo">
+        <button type="submit" class="botao">Filtrar</button>
+      </div>
+    </form>
+
+    <div id="mensagem" hidden></div>
+    <div id="eventos"></div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/agenda-publica.js"></script>
+</body>
+</html>

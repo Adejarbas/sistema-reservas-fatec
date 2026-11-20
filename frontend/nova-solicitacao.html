@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova solicitação - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="nova-solicitacao">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1 id="titulo-pagina">Nova solicitação</h1>
+    <div id="aviso-edicao" hidden></div>
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <form id="form-solicitacao" novalidate>
+      <section class="card">
+        <h2>Dados da atividade</h2>
+        <div class="grade-form">
+          <div class="campo largura-total">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" maxlength="120" required>
+          </div>
+          <div class="campo">
+            <label for="tipo">Tipo</label>
+            <select id="tipo" name="tipo" required></select>
+          </div>
+          <div class="campo">
+            <label for="publico_estimado">Público estimado <span class="dica">Número de participantes</span></label>
+            <input type="number" id="publico_estimado" name="publico_estimado" min="1" required>
+          </div>
+          <div class="campo largura-total">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+          </div>
+          <div class="campo">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
+          </div>
+          <div class="campo">
+            <span class="rotulo" id="rotulo-horario">Horário</span>
+            <div class="grade-form" style="gap: 0 0.5rem">
+              <div>
+                <label for="hora_inicio" class="dica">Início</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" required aria-describedby="rotulo-horario">
+              </div>
+              <div>
+                <label for="hora_fim" class="dica">Fim</label>
+                <input type="time" id="hora_fim" name="hora_fim" required aria-describedby="rotulo-horario">
+              </div>
+            </div>
+          </div>
+          <p class="dica largura-total" id="dica-funcionamento"></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Espaço</h2>
+        <div class="campo">
+          <label for="espaco_id">Espaço <span class="dica">Deixe em branco se precisar só de equipamentos</span></label>
+          <select id="espaco_id" name="espaco_id"></select>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Equipamentos</h2>
+        <div class="grade-form">
+          <div class="campo">
+            <label for="equipamento">Equipamento</label>
+            <select id="equipamento"></select>
+          </div>
+          <div class="campo">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" min="1" value="1">
+          </div>
+        </div>
+        <button type="button" class="botao botao-secundario" id="botao-adicionar">Adicionar equipamento</button>
+
+        <div class="tabela-container" style="margin-top: 1rem">
+          <table class="tabela-responsiva">
+            <caption class="visualmente-oculto">Equipamentos adicionados</caption>
+            <thead>
+              <tr><th>Equipamento</th><th>Quantidade</th><th><span class="visualmente-oculto">Ações</span></th></tr>
+            </thead>
+            <tbody id="lista-equipamentos"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="campo">
+          <label for="motivo">Observações</label>
+          <textarea id="motivo" name="motivo" placeholder="Informações para quem vai analisar o pedido"></textarea>
+        </div>
+
+        <div id="resultado-verificacao" aria-live="polite"></div>
+
+        <div class="acoes">
+          <button type="button" class="botao botao-secundario" id="botao-verificar">Verificar disponibilidade</button>
+          <button type="button" class="botao botao-escuro" id="botao-rascunho">Salvar rascunho</button>
+          <button type="button" class="botao" id="botao-enviar">Enviar para análise</button>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/nova-solicitacao.js"></script>
+</body>
+</html>

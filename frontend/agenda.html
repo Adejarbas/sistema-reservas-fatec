@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda e disponibilidade - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="agenda">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1>Agenda e disponibilidade</h1>
+    <p class="subtitulo">Veja os horários livres, ocupados e bloqueados de cada recurso.</p>
+
+    <form id="form-filtro" class="card filtros">
+      <div class="campo">
+        <label for="data">Data</label>
+        <input type="date" id="data" name="data" required>
+      </div>
+      <div class="campo">
+        <label for="tipo">Recurso</label>
+        <select id="tipo" name="tipo">
+          <option value="espaco">Espaços</option>
+          <option value="equipamento">Equipamentos</option>
+        </select>
+      </div>
+      <div class="campo">
+        <button type="submit" class="botao">Filtrar</button>
+      </div>
+    </form>
+
+    <p>
+      <span class="etiqueta etiqueta-livre">Livre</span>
+      <span class="etiqueta etiqueta-reserva">Ocupado</span>
+      <span class="etiqueta etiqueta-bloqueio">Bloqueado</span>
+      <span class="etiqueta etiqueta-retirado">Retirado</span>
+    </p>
+
+    <div id="mensagem" hidden></div>
+    <div id="agenda" aria-live="polite"></div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/agenda.js"></script>
+</body>
+</html>

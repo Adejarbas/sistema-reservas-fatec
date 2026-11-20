@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="painel">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1 id="saudacao">Painel</h1>
+    <div id="mensagem" hidden></div>
+
+    <div class="indicadores" id="indicadores"></div>
+
+    <section class="card" id="secao-proximas" hidden>
+      <h2>Minhas próximas reservas</h2>
+      <div id="proximas"></div>
+    </section>
+
+    <section class="card" id="secao-tarefas" hidden>
+      <h2>Tarefas pendentes</h2>
+      <ul id="tarefas"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Notificações recentes</h2>
+      <ul class="lista-notificacoes" id="notificacoes"></ul>
+      <p><a href="notificacoes.html">Ver todas</a></p>
+    </section>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/painel.js"></script>
+</body>
+</html>

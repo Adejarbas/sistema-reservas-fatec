@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloqueios de período - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="bloqueios">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1>Bloqueios de período</h1>
+    <p class="subtitulo">Manutenção, eventos institucionais ou indisponibilidade administrativa.</p>
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <form id="form-bloqueio" class="card" novalidate>
+      <h2>Novo bloqueio</h2>
+      <div class="grade-form">
+        <div class="campo">
+          <label for="tipo">Tipo de recurso</label>
+          <select id="tipo" name="tipo"></select>
+        </div>
+        <div class="campo">
+          <label for="recurso">Recurso</label>
+          <select id="recurso" name="recurso" required></select>
+        </div>
+        <div class="campo">
+          <label for="inicio">Início</label>
+          <input type="datetime-local" id="inicio" name="inicio" required>
+        </div>
+        <div class="campo">
+          <label for="fim">Fim</label>
+          <input type="datetime-local" id="fim" name="fim" required>
+        </div>
+        <div class="campo largura-total">
+          <label for="motivo">Motivo</label>
+          <input type="text" id="motivo" name="motivo" required>
+        </div>
+      </div>
+      <button type="submit" class="botao">Bloquear período</button>
+    </form>
+
+    <form id="form-filtro" class="card filtros">
+      <div class="campo">
+        <label for="de">De</label>
+        <input type="date" id="de" name="de">
+      </div>
+      <div class="campo">
+        <label for="ate">Até</label>
+        <input type="date" id="ate" name="ate">
+      </div>
+      <div class="campo">
+        <button type="submit" class="botao">Filtrar</button>
+      </div>
+    </form>
+
+    <div class="tabela-container">
+      <table class="tabela-responsiva">
+        <caption class="visualmente-oculto">Bloqueios cadastrados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Recurso</th>
+            <th scope="col">Período</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Criado por</th>
+            <th scope="col"><span class="visualmente-oculto">Ações</span></th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/bloqueios.js"></script>
+</body>
+</html>

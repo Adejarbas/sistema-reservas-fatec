@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administração - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="admin">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1>Administração</h1>
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <div class="abas" role="tablist" aria-label="Seções da administração">
+      <button type="button" role="tab" id="aba-usuarios" aria-controls="painel-usuarios" data-permissao="gerenciar_usuarios">Usuários</button>
+      <button type="button" role="tab" id="aba-perfis" aria-controls="painel-perfis" data-permissao="gerenciar_usuarios">Perfis</button>
+      <button type="button" role="tab" id="aba-parametros" aria-controls="painel-parametros" data-permissao="parametros">Parâmetros</button>
+      <button type="button" role="tab" id="aba-auditoria" aria-controls="painel-auditoria" data-permissao="auditoria">Auditoria</button>
+    </div>
+
+    <section role="tabpanel" id="painel-usuarios" aria-labelledby="aba-usuarios" hidden>
+      <form id="form-usuario" class="card" novalidate>
+        <h2 id="titulo-form-usuario">Novo usuário</h2>
+        <input type="hidden" name="editando_id">
+        <div class="grade-form">
+          <div class="campo">
+            <label for="usuario-nome">Nome</label>
+            <input type="text" id="usuario-nome" name="nome" required>
+          </div>
+          <div class="campo">
+            <label for="usuario-email">E-mail</label>
+            <input type="email" id="usuario-email" name="email" required>
+          </div>
+          <div class="campo">
+            <label for="usuario-perfil">Perfil</label>
+            <select id="usuario-perfil" name="perfil_id" required></select>
+          </div>
+          <div class="campo">
+            <label for="usuario-senha">Senha <span class="dica" id="dica-senha">Mínimo de 6 caracteres</span></label>
+            <input type="password" id="usuario-senha" name="senha" autocomplete="new-password" aria-describedby="dica-senha">
+          </div>
+          <div class="campo" id="campo-usuario-ativo" hidden>
+            <label class="checkbox-linha"><input type="checkbox" name="ativo" value="1"> Usuário ativo</label>
+          </div>
+        </div>
+        <div class="acoes">
+          <button type="submit" class="botao">Salvar</button>
+          <button type="button" class="botao botao-secundario" id="cancelar-usuario" hidden>Cancelar edição</button>
+        </div>
+      </form>
+
+      <div class="tabela-container">
+        <table class="tabela-responsiva">
+          <caption class="visualmente-oculto">Usuários</caption>
+          <thead>
+            <tr><th scope="col">Nome</th><th scope="col">E-mail</th><th scope="col">Perfil</th><th scope="col">Situação</th><th scope="col"><span class="visualmente-oculto">Ações</span></th></tr>
+          </thead>
+          <tbody id="lista-usuarios"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="painel-perfis" aria-labelledby="aba-perfis" hidden>
+      <div id="lista-perfis"></div>
+    </section>
+
+    <section role="tabpanel" id="painel-parametros" aria-labelledby="aba-parametros" hidden>
+      <div class="card">
+        <p class="subtitulo" style="margin-top: 0">Valores de teste. Cada unidade deve definir os seus.</p>
+        <div id="lista-parametros"></div>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="painel-auditoria" aria-labelledby="aba-auditoria" hidden>
+      <form id="form-auditoria" class="card filtros">
+        <div class="campo">
+          <label for="auditoria-entidade">Entidade</label>
+          <select id="auditoria-entidade" name="entidade">
+            <option value="">Todas</option>
+            <option value="usuario">Usuários</option>
+            <option value="perfil">Perfis</option>
+            <option value="parametro">Parâmetros</option>
+            <option value="espaco">Espaços</option>
+            <option value="equipamento">Equipamentos</option>
+            <option value="categoria">Categorias</option>
+            <option value="bloqueio">Bloqueios</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="auditoria-de">De</label>
+          <input type="date" id="auditoria-de" name="de">
+        </div>
+        <div class="campo">
+          <label for="auditoria-ate">Até</label>
+          <input type="date" id="auditoria-ate" name="ate">
+        </div>
+        <div class="campo">
+          <button type="submit" class="botao">Filtrar</button>
+        </div>
+      </form>
+      <div class="tabela-container">
+        <table class="tabela-responsiva">
+          <caption class="visualmente-oculto">Registros de auditoria</caption>
+          <thead>
+            <tr><th scope="col">Data/hora</th><th scope="col">Usuário</th><th scope="col">Ação</th><th scope="col">Entidade</th><th scope="col">Detalhes</th></tr>
+          </thead>
+          <tbody id="lista-auditoria"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

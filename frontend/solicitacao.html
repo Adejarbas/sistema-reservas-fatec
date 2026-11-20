@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="solicitacao">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <div class="cabecalho-pagina">
+      <h1 id="titulo-pagina">Solicitação</h1>
+      <span id="status-solicitacao"></span>
+    </div>
+
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <section class="card">
+      <h2>Dados da atividade</h2>
+      <dl class="dados" id="dados"></dl>
+    </section>
+
+    <section class="card">
+      <h2>Recursos solicitados</h2>
+      <p class="subtitulo" style="margin-top: 0">Cada recurso tem o seu próprio status.</p>
+      <div class="tabela-container">
+        <table class="tabela-responsiva">
+          <caption class="visualmente-oculto">Recursos da solicitação</caption>
+          <thead>
+            <tr>
+              <th scope="col">Recurso</th>
+              <th scope="col">Período</th>
+              <th scope="col">Status</th>
+              <th scope="col">Observação</th>
+              <th scope="col"><span class="visualmente-oculto">Ações</span></th>
+            </tr>
+          </thead>
+          <tbody id="recursos"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="secao-acoes" hidden>
+      <h2>Ações</h2>
+      <div id="acoes"></div>
+    </section>
+
+    <section class="card">
+      <h2>Histórico</h2>
+      <ol class="linha-tempo" id="historico"></ol>
+    </section>
+
+    <section class="card" id="secao-movimentacoes" hidden>
+      <h2>Retiradas e devoluções</h2>
+      <ul class="lista-faixas" id="movimentacoes"></ul>
+    </section>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/solicitacao.js"></script>
+</body>
+</html>

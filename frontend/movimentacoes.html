@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirada e devolução - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="movimentacoes">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1>Retirada e devolução de equipamentos</h1>
+
+    <form id="form-filtro" class="card filtros">
+      <div class="campo">
+        <label for="status">Situação da reserva</label>
+        <select id="status" name="status">
+          <option value="pendente">Aguardando análise</option>
+          <option value="aprovada">Aprovada (aguardando retirada)</option>
+          <option value="retirado">Retirado (aguardando devolução)</option>
+          <option value="devolvido">Devolvido</option>
+          <option value="rejeitada">Rejeitada</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label for="data">Data <span class="dica">opcional</span></label>
+        <input type="date" id="data" name="data">
+      </div>
+      <div class="campo">
+        <button type="submit" class="botao">Filtrar</button>
+      </div>
+    </form>
+
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <div class="tabela-container">
+      <table class="tabela-responsiva">
+        <caption class="visualmente-oculto">Reservas de equipamento</caption>
+        <thead>
+          <tr>
+            <th scope="col">Equipamento</th>
+            <th scope="col">Atividade</th>
+            <th scope="col">Solicitante</th>
+            <th scope="col">Período</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+
+    <section class="card" style="margin-top: 1.5rem">
+      <h2>Últimas movimentações</h2>
+      <ul class="lista-faixas" id="ultimas"></ul>
+    </section>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/movimentacoes.js"></script>
+</body>
+</html>

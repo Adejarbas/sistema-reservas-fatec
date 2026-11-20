@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaços - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="espacos">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <h1>Espaços</h1>
+    <div id="mensagem" hidden tabindex="-1"></div>
+
+    <form id="form-espaco" class="card" novalidate>
+      <h2 id="titulo-form">Novo espaço</h2>
+      <input type="hidden" name="editando_id">
+      <div class="grade-form">
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+        <div class="campo">
+          <label for="localizacao">Localização</label>
+          <input type="text" id="localizacao" name="localizacao" placeholder="Ex.: Bloco A - Térreo">
+        </div>
+        <div class="campo">
+          <label for="capacidade">Capacidade (pessoas)</label>
+          <input type="number" id="capacidade" name="capacidade" min="1" required>
+        </div>
+        <div class="campo" id="campo-ativo" hidden>
+          <span class="rotulo">Situação</span>
+          <label class="checkbox-linha"><input type="checkbox" name="ativo" value="1"> Ativo (pode ser reservado)</label>
+        </div>
+      </div>
+      <div class="acoes">
+        <button type="submit" class="botao">Salvar</button>
+        <button type="button" class="botao botao-secundario" id="botao-cancelar" hidden>Cancelar edição</button>
+      </div>
+    </form>
+
+    <div class="tabela-container">
+      <table class="tabela-responsiva">
+        <caption class="visualmente-oculto">Espaços cadastrados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Localização</th>
+            <th scope="col">Capacidade</th>
+            <th scope="col">Situação</th>
+            <th scope="col"><span class="visualmente-oculto">Ações</span></th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/espacos.js"></script>
+</body>
+</html>

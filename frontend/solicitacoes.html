@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitações - Reservas Fatec</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="solicitacoes">
+  <main class="conteudo" id="conteudo" tabindex="-1">
+    <div class="cabecalho-pagina">
+      <h1 id="titulo-pagina">Solicitações</h1>
+      <a href="nova-solicitacao.html" class="botao" id="link-nova" hidden>Nova solicitação</a>
+    </div>
+
+    <form id="form-filtro" class="card filtros">
+      <div class="campo">
+        <label for="status">Status</label>
+        <select id="status" name="status"></select>
+      </div>
+      <div class="campo">
+        <label for="de">Data de</label>
+        <input type="date" id="de" name="de">
+      </div>
+      <div class="campo">
+        <label for="ate">Data até</label>
+        <input type="date" id="ate" name="ate">
+      </div>
+      <div class="campo">
+        <label for="espaco_id">Espaço</label>
+        <select id="espaco_id" name="espaco_id"></select>
+      </div>
+      <div class="campo">
+        <label for="equipamento_id">Equipamento</label>
+        <select id="equipamento_id" name="equipamento_id"></select>
+      </div>
+      <div class="campo" id="campo-solicitante" hidden>
+        <label for="solicitante">Solicitante</label>
+        <input type="search" id="solicitante" name="solicitante" placeholder="Nome">
+      </div>
+      <div class="campo">
+        <button type="submit" class="botao">Filtrar</button>
+      </div>
+    </form>
+
+    <div id="mensagem" hidden></div>
+    <p id="total" class="subtitulo" aria-live="polite"></p>
+
+    <div class="tabela-container">
+      <table class="tabela-responsiva">
+        <caption class="visualmente-oculto">Lista de solicitações</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Atividade</th>
+            <th scope="col">Data e horário</th>
+            <th scope="col">Recursos</th>
+            <th scope="col" class="col-solicitante">Solicitante</th>
+            <th scope="col">Status</th>
+            <th scope="col"><span class="visualmente-oculto">Ações</span></th>
+          </tr>
+        </thead>
+        <tbody id="lista"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/solicitacoes.js"></script>
+</body>
+</html>
