@@ -1,0 +1,28 @@
+{
+  "name": "gestao-reservas",
+  "version": "1.0.0",
+  "description": "Sistema de gestão de atividades extracurriculares e reservas de espaços e equipamentos",
+  "main": "src/server.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node database/seed.js",
+    "test": "node --test --test-reporter=spec tests/*.test.js",
+    "test:evidencia": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=spec --test-reporter-destination=../docs/evidencias/saida-testes.txt tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.2.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.2"
+  }
+}
