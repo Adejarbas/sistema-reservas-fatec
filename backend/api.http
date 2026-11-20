@@ -1,0 +1,65 @@
+### Testes manuais da API (extensão REST Client do VS Code)
+### Clique em "Send Request" acima de cada requisição.
+### O cookie do login fica salvo e é enviado nas próximas.
+
+@url = http://localhost:3000/api
+
+### Login como administrador
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{ "email": "admin@exemplo.edu.br", "senha": "senha123" }
+
+### Login como aluna (solicitante)
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{ "email": "aluno@exemplo.edu.br", "senha": "senha123" }
+
+### Login com senha errada (401)
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{ "email": "admin@exemplo.edu.br", "senha": "errada" }
+
+### Login de usuário inativo (403)
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{ "email": "inativo@exemplo.edu.br", "senha": "senha123" }
+
+### Quem está logado
+GET {{url}}/auth/me
+
+### Logout
+POST {{url}}/auth/logout
+
+### Listar usuários (só admin; com a aluna logada retorna 403)
+GET {{url}}/usuarios
+
+### Criar usuário
+POST {{url}}/usuarios
+Content-Type: application/json
+
+{ "nome": "Lucas Ferreira", "email": "lucas@exemplo.edu.br", "senha": "senha123", "perfil_id": 1 }
+
+### Desativar usuário
+PUT {{url}}/usuarios/7
+Content-Type: application/json
+
+{ "ativo": false }
+
+### Perfis e permissões
+GET {{url}}/perfis
+
+### Parâmetros
+GET {{url}}/parametros
+
+### Alterar intervalo técnico
+PUT {{url}}/parametros/intervalo_tecnico_min
+Content-Type: application/json
+
+{ "valor": "15" }
+
+### Auditoria
+GET {{url}}/auditoria
