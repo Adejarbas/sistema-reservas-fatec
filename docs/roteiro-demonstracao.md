@@ -81,7 +81,13 @@ Extra: tente abrir a URL da API de aprovação logado como Ana. O servidor respo
 2. Clique em **Cancelar solicitação** e informe o motivo.
 3. Volte em **Agenda**, data D+3: o horário das 14:00 às 16:00 do Auditório ficou **livre** (CA-09).
 
-## 7. Testes automatizados
+## 7. Relatório em CSV (se der tempo)
+
+1. Como **gestor**, abra **Todas as solicitações**.
+2. Filtre por status "Aprovada" e um período.
+3. Clique em **Exportar CSV** e abra o arquivo no Excel: só vêm as linhas filtradas, com acentos corretos.
+
+## 8. Testes automatizados
 
 ```
 cd backend

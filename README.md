@@ -32,9 +32,41 @@ A ideia foi seguir a orientação do enunciado: **um sistema pequeno, completo e
 - Bloqueio de períodos
 - Notificações dentro do sistema
 - Histórico de cada solicitação e auditoria das ações administrativas
-- Listagens com filtros (status, data, espaço, equipamento, solicitante)
+- Listagens com filtros (status, data, espaço, equipamento, solicitante) e exportação em CSV
 - Agenda pública só com os eventos aprovados (opcional do enunciado)
 - Layout responsivo (celular e desktop) e navegação por teclado
+
+## Telas
+
+**Login**
+![Login](docs/prints/01-login.jpg)
+
+**Painel do gestor**
+![Painel](docs/prints/02-painel.jpg)
+
+**Agenda e disponibilidade por dia**
+![Agenda](docs/prints/03-agenda.jpg)
+
+**Conflito de horário bloqueado com mensagem clara**
+![Conflito](docs/prints/04-conflito.jpg)
+
+**Fila de aprovação e exportação CSV**
+![Fila de aprovação](docs/prints/05-fila-aprovacao.jpg)
+
+**Análise da solicitação, com status por recurso**
+![Análise](docs/prints/06-analise.jpg)
+
+**Retirada e devolução de equipamentos**
+![Retirada e devolução](docs/prints/07-retirada-devolucao.jpg)
+
+**Cadastro de equipamentos com situação**
+![Equipamentos](docs/prints/08-equipamentos.jpg)
+
+**Administração**
+![Administração](docs/prints/09-administracao.jpg)
+
+**Versão para celular**
+![Celular](docs/prints/10-celular.png)
 
 ## Tecnologias
 
@@ -48,7 +80,7 @@ A ideia foi seguir a orientação do enunciado: **um sistema pequeno, completo e
 
 ## Pré-requisitos
 
-- Node.js 20 ou mais novo (testado na versão 22)
+- Node.js 22 ou mais novo (o `better-sqlite3` usado exige essa versão)
 - npm
 
 ## Como rodar
@@ -65,6 +97,12 @@ Acesse **http://localhost:3000**.
 
 - `npm run seed` apaga e recria o banco. Use sempre que quiser voltar aos dados iniciais.
 - Para desenvolvimento, `npm run dev` reinicia o servidor quando um arquivo é salvo.
+- Se o `.env` não for criado, o servidor sobe mesmo assim com uma chave de desenvolvimento (e avisa no terminal).
+
+### Problemas comuns
+
+- **Erro do `node-gyp` / "Visual Studio" no `npm install`**: confira se está rodando dentro da pasta `backend` (é lá que fica o arquivo `.npmrc` que evita essa compilação) e se o Node é 22 ou mais novo (`node -v`).
+- **Porta 3000 ocupada**: mude `PORT` no `.env`.
 
 ## Usuários de teste
 
@@ -132,6 +170,7 @@ Os testes usam um banco em memória, então não mexem no banco da aplicação.
 │   │   └── utils/              datas, validação, erros
 │   ├── tests/                  testes automatizados
 │   ├── api.http                requisições de exemplo (extensão REST Client)
+│   ├── .npmrc                  evita compilar o better-sqlite3 na instalação
 │   └── .env.example
 ├── frontend/
 │   ├── *.html                  uma página por tela
@@ -142,6 +181,7 @@ Os testes usam um banco em memória, então não mexem no banco da aplicação.
     ├── modelagem.md            DER, casos de uso, estados e processo (Mermaid)
     ├── wireframes.md           protótipo das telas e paleta de cores
     ├── roteiro-demonstracao.md passo a passo da apresentação
+    ├── prints/                 imagens das telas usadas neste README
     └── evidencias/
         └── saida-testes.txt    saída dos testes
 ```

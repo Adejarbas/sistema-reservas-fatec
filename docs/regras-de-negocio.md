@@ -82,7 +82,7 @@ Rejeitada, Cancelada e Concluída são estados finais. Qualquer outra transiçã
 | RF-11 Retirada e devolução | Feito | `movimentacaoService`, tela `movimentacoes.html` |
 | RF-12 Histórico de alterações e decisões | Feito | `aprovacao_historico` + `auditoria` |
 | RF-13 Listagem filtrável | Feito | `GET /api/solicitacoes` (status, data, espaço, equipamento, solicitante) |
-| RF-14 Exportar CSV/PDF (opcional) | Não feito | — |
+| RF-14 Exportar CSV/PDF (opcional) | Feito em CSV | botão "Exportar CSV" em `solicitacoes.html` (`frontend/js/solicitacoes.js` → `exportarCsv()`), exporta a lista com os filtros aplicados |
 | RF-15 Avisos por e-mail (opcional) | Não feito | — |
 | RF-16 Calendário público (opcional) | Feito | `GET /api/agenda`, tela `agenda-publica.html` |
 
@@ -107,4 +107,4 @@ Rejeitada, Cancelada e Concluída são estados finais. Qualquer outra transiçã
 - O intervalo técnico vale para espaços. Para equipamentos é usada a sobreposição simples.
 - Uma solicitação tem um único período para todos os recursos.
 - Ao reduzir a quantidade de um item por avaria, reservas futuras já aprovadas não são revistas automaticamente.
-- Exportação CSV/PDF e e-mail (opcionais) não foram implementados.
+- Exportação em PDF e avisos por e-mail (opcionais) não foram implementados; o relatório sai em CSV, que abre no Excel, e os avisos são as notificações dentro do sistema.
