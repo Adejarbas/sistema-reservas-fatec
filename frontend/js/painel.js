@@ -3,7 +3,9 @@ function indicador(titulo, valor, link) {
 }
 
 async function carregarPainel(usuario) {
-  document.getElementById('saudacao').textContent = `Olá, ${usuario.nome.split(' ')[0]}`;
+  // Primeiro nome, pulando títulos como "Prof."
+  const primeiroNome = usuario.nome.split(' ').find((parte) => !parte.endsWith('.')) || usuario.nome;
+  document.getElementById('saudacao').textContent = `Olá, ${primeiroNome}`;
   const indicadores = [];
   const tarefas = [];
 

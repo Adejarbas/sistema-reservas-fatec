@@ -1,6 +1,36 @@
 const formFiltro = document.getElementById('form-filtro');
 const apenasMinhas = parametroUrl('minhas') === '1';
 let mostrarSolicitante = false;
+let listaAtual = [];
+
+function celulaCsv(valor) {
+  let texto = String(valor ?? '');
+  // Evita que o Excel interprete o conteúdo como fórmula.
+  if (/^[=+\-@]/.test(texto)) texto = `'${texto}`;
+  return `"${texto.replace(/"/g, '""')}"`;
+}
+
+// Gera o relatório com a lista filtrada que está na tela.
+// Usa ";" porque é o separador que o Excel em português espera.
+function exportarCsv() {
+  const cabecalho = ['Número', 'Atividade', 'Tipo', 'Data', 'Início', 'Fim', 'Espaço', 'Equipamentos',
+    'Público estimado', 'Solicitante', 'Status'];
+  const linhas = listaAtual.map((s) => [
+    s.id, s.titulo, TIPOS_ATIVIDADE[s.tipo] || s.tipo, dataBR(s.inicio), horaDe(s.inicio), horaDe(s.fim),
+    s.espacos || '', s.total_equipamentos, s.publico_estimado, s.solicitante, STATUS_SOLICITACAO[s.status]
+  ]);
+  const csv = [cabecalho, ...linhas].map((linha) => linha.map(celulaCsv).join(';')).join('\r\n');
+
+  // O "﻿" no começo faz o Excel reconhecer os acentos (UTF-8).
+  const arquivo = new Blob([`﻿${csv}`], { type: 'text/csv;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(arquivo);
+  link.download = `solicitacoes-${hojeISO()}.csv`;
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+document.getElementById('botao-exportar').addEventListener('click', exportarCsv);
 
 async function carregarLista() {
   const mensagem = document.getElementById('mensagem');
@@ -11,6 +41,8 @@ async function carregarLista() {
 
   try {
     const lista = await api.get('/solicitacoes', filtros);
+    listaAtual = lista;
+    document.getElementById('botao-exportar').disabled = lista.length === 0;
     document.getElementById('total').textContent = `${lista.length} solicitação(ões) encontrada(s).`;
 
     document.getElementById('lista').innerHTML = lista.length === 0
