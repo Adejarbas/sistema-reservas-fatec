@@ -12,7 +12,7 @@
     "test:evidencia": "node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=spec --test-reporter-destination=../docs/evidencias/saida-testes.txt tests/*.test.js"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

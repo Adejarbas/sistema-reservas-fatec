@@ -1,8 +1,13 @@
 require('dotenv').config({ quiet: true });
 
 if (!process.env.JWT_SECRET) {
-  console.error('Defina JWT_SECRET no arquivo .env (veja o .env.example).');
-  process.exit(1);
+  if (process.env.NODE_ENV === 'production') {
+    console.error('Defina JWT_SECRET no arquivo .env (veja o .env.example).');
+    process.exit(1);
+  }
+  // Facilita rodar o projeto pela primeira vez; em produção a chave é obrigatória.
+  process.env.JWT_SECRET = 'chave-de-desenvolvimento';
+  console.warn('Aviso: arquivo .env não encontrado, usando uma chave de desenvolvimento.');
 }
 
 const { db } = require('./db');
