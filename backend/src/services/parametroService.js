@@ -12,6 +12,13 @@ const VALIDADORES = {
   horario_fechamento: (v) => HORA.test(v)
 };
 
+const MENSAGENS = {
+  intervalo_tecnico_min: 'Informe o intervalo técnico em minutos (de 0 a 240).',
+  antecedencia_min_horas: 'Informe a antecedência em horas (de 0 a 720).',
+  horario_abertura: 'Informe o horário de abertura no formato HH:MM (ex.: 07:00).',
+  horario_fechamento: 'Informe o horário de fechamento no formato HH:MM (ex.: 23:00).'
+};
+
 function listar() {
   return parametroModel.listar();
 }
@@ -22,7 +29,7 @@ function atualizar(chave, valor, adminId) {
 
   const texto = String(valor ?? '').trim();
   if (!VALIDADORES[chave](texto)) {
-    throw new AppError(`Valor inválido para ${chave}.`, 400);
+    throw new AppError(MENSAGENS[chave], 400);
   }
 
   const config = { ...obterConfiguracao(), [chave]: texto };

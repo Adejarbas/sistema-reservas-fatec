@@ -145,6 +145,8 @@ describe('Fluxo de análise e aprovação', () => {
     const depois = await u.gestor.patch('/api/solicitacoes/1/concluir');
     assert.equal(depois.status, 200);
     assert.equal(depois.body.status, 'concluida');
+    // Equipamentos aprovados que nunca foram retirados não ficam como "aprovada".
+    assert.ok(depois.body.equipamentos.every((e) => e.status === 'cancelada'));
   });
 
   test('CA-12: duas aprovações simultâneas do mesmo recurso não duplicam a alocação', async () => {

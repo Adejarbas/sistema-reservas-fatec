@@ -18,6 +18,20 @@ O sistema centraliza esse processo:
 
 A ideia foi seguir a orientação do enunciado: **um sistema pequeno, completo e confiável**. As regras importantes (conflito de horário, capacidade, permissões, aprovação sem duplicar recurso) estão no servidor e cobertas por testes.
 
+## Documentação do trabalho
+
+| Entregável | Onde está |
+|---|---|
+| Regras de negócio, RF/RNF implementados e limitações conhecidas | [docs/regras-de-negocio.md](docs/regras-de-negocio.md) |
+| Modelagem: DER, casos de uso, estados e processo (Mermaid) | [docs/modelagem.md](docs/modelagem.md) |
+| Protótipo das telas e paleta de cores | [docs/wireframes.md](docs/wireframes.md) |
+| Roteiro de demonstração | [docs/roteiro-demonstracao.md](docs/roteiro-demonstracao.md) |
+| Evidência de execução dos testes | [docs/evidencias/saida-testes.txt](docs/evidencias/saida-testes.txt) |
+| Script de criação do banco | [backend/database/schema.sql](backend/database/schema.sql) |
+| Dados fictícios (seed) | [backend/database/seed.js](backend/database/seed.js) |
+| Testes automatizados | [backend/tests/](backend/tests/) |
+| Exemplos de chamadas à API | [backend/api.http](backend/api.http) |
+
 ## Funcionalidades
 
 - Login com perfis: Solicitante, Gestor de Espaços, Responsável por Equipamentos e Administrador

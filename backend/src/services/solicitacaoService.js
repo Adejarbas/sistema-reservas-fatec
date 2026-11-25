@@ -421,6 +421,7 @@ function concluir(id, usuario) {
 
     reservaModel.atualizarStatusEspacos(id, ['aprovada'], 'concluida');
     reservaModel.atualizarStatusEquipamentos(id, ['pendente'], 'cancelada', 'Não analisado antes da conclusão.');
+    reservaModel.atualizarStatusEquipamentos(id, ['aprovada'], 'cancelada', 'Aprovado, mas não foi retirado.');
     mudarStatus(solicitacao, 'concluida', usuario.id, 'concluir');
     solicitacaoModel.atualizarStatusAtividade(solicitacao.atividade_id, 'concluida');
   }).immediate();
